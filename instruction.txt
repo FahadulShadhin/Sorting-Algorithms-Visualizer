@@ -1,0 +1,4 @@
+go to cmd
+go to the project folder
+type: pyinstaller --onefile --windowed main.py
+It will make a file with .exe extention.
