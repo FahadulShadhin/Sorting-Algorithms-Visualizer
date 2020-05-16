@@ -26,8 +26,3 @@ python3.7 main.py
  <p>Or, go to <strong>dist</strong> folder and run <strong>main.exe</strong> directly from there. (for windows)</p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-## Screenshots:
-Example of before and after sorting...
-
-<p align="center"><img src="images/before.png" width=600 height=400></p>
-<p align="center"><img src="images/after.png" width=600 height=400></p>
