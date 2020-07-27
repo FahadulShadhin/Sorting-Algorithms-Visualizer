@@ -9,7 +9,7 @@ A python application to visualize popular sorting algorithms. It's a simple desk
 * Heap Sort 
 * Counting Sort
 ----------------------------------------------------------------------------------------------------------------------------------------
-## Technologies:
+## Technologies used:
 The project is created with:
 * Python 3.7.7
 * Tkinter 8.6
