@@ -14,8 +14,7 @@ The project is created with:
 * Python 3.7.7
 * Tkinter 8.6
 ----------------------------------------------------------------------------------------------------------------------------------------
-## Requirements:
-* Python 3.7
+## Run it:
 <p>Run <strong>main.py</strong><p>
 
 ```cmd
