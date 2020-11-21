@@ -21,7 +21,4 @@ The project is created with:
 python main.py
 python3.7 main.py
 ```
-
- <p>Or, go to <strong>dist</strong> folder and run <strong>main.exe</strong> directly from there. (for windows)</p>
-
 ----------------------------------------------------------------------------------------------------------------------------------------
