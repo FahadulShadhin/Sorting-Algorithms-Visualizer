@@ -1,18 +1,14 @@
-def bubble_sort(ara):
-    n = len(ara)
-    for i in range(n-1):
-        for j in range(n-i-1):
-            if ara[j] > ara[j+1]:
-                ara[j], ara[j+1] = ara[j+1], ara[j]
+import time
+from colors import *
 
-def main():
-    ara = [10, 2, 9, 100, 11, 1, 3]
-    bubble_sort(ara)
-
-    print("Soretd array: ")
-    for item in ara:
-        print(item, end = " ")
-    print("\n")
-
-if __name__ == "__main__":
-    main()
+def bubble_sort(data, drawData, timeTick):
+    size = len(data)
+    for i in range(size-1):
+        for j in range(size-i-1):
+            if data[j] > data[j+1]:
+                data[j], data[j+1] = data[j+1], data[j]
+                drawData(data, [YELLOW if x == j or x == j+1 else BLUE for x in range(len(data))] )
+                time.sleep(timeTick)
+                
+    drawData(data, [BLUE for x in range(len(data))])
+  

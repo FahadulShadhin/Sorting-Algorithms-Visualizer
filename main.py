@@ -4,13 +4,13 @@ import random
 from colors import *
 
 ### IMPORTING SORTING ALGORITHMS ###
-from bubbleSort import bubble_sort_ascending, bubble_sort_descending
-from selectionSort import selection_sort_ascending, selection_sort_descending
-from insertionSort import insertion_sort_ascending, insertion_sort_descending
-from mergeSort import merge_sort_ascending, merge_sort_descending
-from quickSort import quick_sort_ascending, quick_sort_descending
-from heapSort import heap_sort_ascending, heap_sort_descending
-from countingSort import counting_sort_ascending, counting_sort_descending
+from algorithms.bubbleSort import bubble_sort
+from algorithms.selectionSort import selection_sort
+from algorithms.insertionSort import insertion_sort
+from algorithms.mergeSort import merge_sort
+from algorithms.quickSort import quick_sort
+from algorithms.heapSort import heap_sort
+from algorithms.countingSort import counting_sort
 #####################################
 
 
@@ -72,47 +72,25 @@ def set_speed():
         return 0.001
 
 
-### SORTING IN ASCENDING ORDER ###
-def sort_ascending():
+### SORTING ###
+def sort():
     global data
     timeTick = set_speed()
     
     if algo_menu.get() == 'Bubble Sort':
-        bubble_sort_ascending(data, drawData, timeTick)
+        bubble_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Selection Sort':
-        selection_sort_ascending(data, drawData, timeTick)
+        selection_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Insertion Sort':
-        insertion_sort_ascending(data, drawData, timeTick)
+        insertion_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Merge Sort':
-        merge_sort_ascending(data, 0, len(data)-1, drawData, timeTick)
+        merge_sort(data, 0, len(data)-1, drawData, timeTick)
     elif algo_menu.get() == 'Quick Sort':
-        quick_sort_ascending(data, 0, len(data)-1, drawData, timeTick)
+        quick_sort(data, 0, len(data)-1, drawData, timeTick)
     elif algo_menu.get() == 'Heap Sort':
-        heap_sort_ascending(data, drawData, timeTick)
+        heap_sort(data, drawData, timeTick)
     else:
-        counting_sort_ascending(data, drawData, timeTick)
-
-
-### SORTING IN DESCENDING ORDER ###
-def sort_descending():
-    global data
-    timeTick = set_speed()
-
-    if algo_menu.get() == 'Bubble Sort':
-        bubble_sort_descending(data, drawData, timeTick)
-    elif algo_menu.get() == 'Selection Sort':
-        selection_sort_descending(data, drawData, timeTick)
-    elif algo_menu.get() == 'Insertion Sort':
-        insertion_sort_descending(data, drawData, timeTick)
-    elif algo_menu.get() == 'Merge Sort':
-        merge_sort_descending(data, 0, len(data)-1, drawData, timeTick)
-    elif algo_menu.get() == 'Quick Sort':
-        quick_sort_descending(data, 0, len(data)-1, drawData, timeTick)
-    elif algo_menu.get() == 'Heap Sort':
-        heap_sort_descending(data, drawData, timeTick)
-    else:
-        counting_sort_descending(data, drawData, timeTick)
-
+        counting_sort(data, drawData, timeTick)
 
 
 ### USER INTERFACE ###
@@ -131,19 +109,14 @@ speed_menu = ttk.Combobox(UI_frame, textvariable=speed_name, values=speed_list)
 speed_menu.grid(row=1, column=1, padx=5, pady=5)
 speed_menu.current(0)
 
-# '#FCF3CF'
 canvas = Canvas(window, width=800, height=400, bg=WHITE)
 canvas.grid(row=1, column=0, padx=10, pady=5)
 
-b1 = Button(UI_frame, text="Sort in Ascending Oreder", command=sort_ascending, bg=LIGHT_GRAY)
+b1 = Button(UI_frame, text="Sort", command=sort, bg=LIGHT_GRAY)
 b1.grid(row=2, column=1, padx=5, pady=5)
-
-b2 = Button(UI_frame, text="Sort in Descending Oreder", command=sort_descending, bg=LIGHT_GRAY)
-b2.grid(row=2, column=2, padx=5, pady=5)
 
 b3 = Button(UI_frame, text="Generate Array", command=generate, bg=LIGHT_GRAY)
 b3.grid(row=2, column=0, padx=5, pady=5)
-###
 
 
 window.mainloop()

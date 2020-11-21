@@ -1,22 +1,15 @@
-def insertion_sort(ara):
-    n = len(ara)
+import time
+from colors import *
 
-    for i in range(n):
-        temp = ara[i]
+def insertion_sort(data, drawData, timeTick):
+    for i in range(len(data)):
+        temp = data[i]
         k = i
-        while k > 0 and temp < ara[k-1]:
-            ara[k] = ara[k-1]
+        while k > 0 and temp < data[k-1]:
+            data[k] = data[k-1]
             k -= 1
-            ara[k] = temp
-
-def main():
-    ara = [10, 2, 9, 100, 11, 1, 3]
-    insertion_sort(ara)
-
-    print("Sorted array: ")
-    for item in ara:
-        print(item, end = " ")
-    print("\n")
-
-if __name__ == "__main__":
-    main()
+        data[k] = temp
+        drawData(data, [YELLOW if x == k or x == i else BLUE for x in range(len(data))])
+        time.sleep(timeTick)
+        
+    drawData(data, [BLUE for x in range(len(data))])

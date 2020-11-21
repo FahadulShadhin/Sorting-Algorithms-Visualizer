@@ -1,36 +1,33 @@
-def heapify(ara, n, i):
+import time
+from colors import *
+
+def heapify(data, n, i, drawData, timeTick):
     largest = i
     left = 2*i+1
     right = 2*i+2
 
-    if left < n and ara[i] < ara[left]:
+    if left < n and data[i] < data[left]:
         largest = left
 
-    if right < n and ara[largest] < ara[right]:
+    if right < n and data[largest] < data[right]:
         largest = right
 
     if largest != i:
-        ara[i], ara[largest] = ara[largest], ara[i]
-        heapify(ara, n, largest)
+        data[i], data[largest] = data[largest], data[i]
+        heapify(data, n, largest, drawData, timeTick)
 
-def heap_sort(ara):
-    n = len(ara)
+
+def heap_sort(data, drawData, timeTick):
+    n = len(data)
 
     for i in range(n-1, -1, -1):
-        heapify(ara, n, i)
+        heapify(data, n, i, drawData, timeTick)
 
     for i in range(n-1, 0, -1):
-        ara[i], ara[0] = ara[0], ara[i]
-        heapify(ara, i, 0)
-
-def main():
-    ara = [10, 2, 9, 100, 11, 1, 3]
-    heap_sort(ara)
-
-    print("Sorted array is: ")
-    for item in ara:
-        print(item, end = " ")
-    print("\n")
-
-if __name__ == "__main__":
-    main()
+        data[i], data[0] = data[0], data[i]
+        heapify(data, i, 0, drawData, timeTick)
+        drawData(data, [YELLOW if x == i else BLUE for x in range(n)])
+        time.sleep(timeTick)
+    
+    drawData(data, [BLUE for x in range(len(data))])
+    

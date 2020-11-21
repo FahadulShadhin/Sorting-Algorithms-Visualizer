@@ -1,22 +1,24 @@
-def counting_sort(ara):
-    n = max(ara) + 1
-    count = [0] * n
-    for item in ara:
-        count[item] +=1
+# Counting sort is not a comperison-based algorithm like the others.
+# This algorithm counts the frequency of every unique element in a range.
+# If the maximum value of the array is large it is not a good idea to use counting sort.
+# But as in this case data[] is generating values between 1 to 100, counting sort works just fine :)
 
+import time
+from colors import *
+
+def counting_sort(data, drawData, timeTick):
+    n = max(data) + 1
+    count = [0] * n
+    for item in data:
+        count[item] += 1
+    
     k = 0
-    for i in range(n-1, -1, -1):
+    for i in range(n):
         for j in range(count[i]):
-            ara[k] = i
+            data[k] = i
+            drawData(data, [BLUE for x in range(len(data))] )
+            time.sleep(timeTick)
             k += 1
 
-def main():
-    ara = [13, 1, 100, 99, 13, 12, 13, 99, 1, 2, 3, 3, 100, 100]
-    counting_sort(ara)
-    print("Sorted array: ")
-    for item in ara:
-        print(item, end = " ")
-    print("\n")
+    drawData(data, [BLUE for x in range(len(data))])
 
-if __name__ == "__main__":
-    main()

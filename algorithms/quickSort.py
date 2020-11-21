@@ -1,29 +1,25 @@
-def partition(ara, start, end):
+import time
+from colors import *
+
+def partition(data, start, end, drawData, timeTick):
     i = start + 1
-    pivot = ara[start]
+    pivot = data[start]
 
     for j in range(start+1, end+1):
-        if ara[j] < pivot:
-            ara[i], ara[j] = ara[j], ara[i]
-            i += 1
-    ara[start], ara[i-1] = ara[i-1], ara[start]
+        if data[j] < pivot:
+            data[i], data[j] = data[j], data[i]
+            i+=1
+    data[start], data[i-1] = data[i-1], data[start]
     return i-1
 
-def quick_sort(ara, start, end):
+def quick_sort(data, start, end, drawData, timeTick):
     if start < end:
-        pivot_position = partition(ara, start, end)
-        quick_sort(ara, start, pivot_position-1)
-        quick_sort(ara, pivot_position+1, end)
+        pivot_position = partition(data, start, end, drawData, timeTick)
+        quick_sort(data, start, pivot_position-1, drawData, timeTick)
+        quick_sort(data, pivot_position+1, end, drawData, timeTick)
 
-def main():
-    ara = [10, 2, 9, 100, 11, 1, 3]
-    n = len(ara)
-    quick_sort(ara, 0, n-1)
-
-    print("Sorted array: ")
-    for item in ara:
-        print(item, end = " ")
-    print("\n")
-
-if __name__ == "__main__":
-    main()
+        drawData(data, [PURPLE if x >= start and x < pivot_position else YELLOW if x == pivot_position
+                        else DARK_BLUE if x > pivot_position and x <=end else BLUE for x in range(len(data))])
+        time.sleep(timeTick)
+        
+    drawData(data, [BLUE for x in range(len(data))])
