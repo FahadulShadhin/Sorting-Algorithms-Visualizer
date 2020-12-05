@@ -3,7 +3,7 @@ from tkinter import ttk
 import random
 from colors import *
 
-### IMPORTING SORTING ALGORITHMS ###
+# Importing algorithms 
 from algorithms.bubbleSort import bubble_sort
 from algorithms.selectionSort import selection_sort
 from algorithms.insertionSort import insertion_sort
@@ -11,18 +11,15 @@ from algorithms.mergeSort import merge_sort
 from algorithms.quickSort import quick_sort
 from algorithms.heapSort import heap_sort
 from algorithms.countingSort import counting_sort
-#####################################
 
 
-### MAIN WINDOW ###
+# Main window 
 window = Tk()
 window.title("Sorting Algorithms Visualization")
 window.maxsize(1000, 700)
 window.config(bg = WHITE)
-###################
 
 
-# SOME VARIABLES :/
 algorithm_name = StringVar()
 speed_name = StringVar()
 data = []
@@ -30,7 +27,7 @@ algo_list = ['Bubble Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort', 'Q
 speed_list = ['Fast', 'Medium', 'Slow']
 
 
-### DRAWING THE GRIDS ###
+# Drawing the numerical array as bars
 def drawData(data, colorArray):
     canvas.delete("all")
     canvas_width = 800
@@ -50,7 +47,7 @@ def drawData(data, colorArray):
     window.update_idletasks()
 
 
-### GENERATE RANDOM UNSORTED ARRAY ###
+# Randomly generate array
 def generate():
     global data
 
@@ -62,7 +59,6 @@ def generate():
     drawData(data, [BLUE for x in range(len(data))])
 
 
-# Setting sorting speed
 def set_speed():
     if speed_menu.get() == 'Slow':
         return 0.3
@@ -72,7 +68,6 @@ def set_speed():
         return 0.001
 
 
-### SORTING ###
 def sort():
     global data
     timeTick = set_speed()
@@ -93,7 +88,7 @@ def sort():
         counting_sort(data, drawData, timeTick)
 
 
-### USER INTERFACE ###
+### User interface ###
 UI_frame = Frame(window, width= 900, height=300, bg=WHITE)
 UI_frame.grid(row=0, column=0, padx=10, pady=5)
 
