@@ -1,7 +1,7 @@
 # Counting sort is not a comperison-based algorithm like the others.
 # This algorithm counts the frequency of every unique element in a range.
 # If the maximum value of the array is large it is not a good idea to use counting sort.
-# But as in this case data[] is generating values between 1 to 100, counting sort works just fine :)
+# But as in this case data[] is generating values between 1 to 150, counting sort works just fine :)
 
 import time
 from colors import *
