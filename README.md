@@ -15,6 +15,7 @@ A python application to visualize popular sorting algorithms. It's a simple desk
 ----------------------------------------------------------------------------------------------------------------------------------------
 ## Run It:
 <p> Clone the repository </p>
+
 ```
 https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 ```
