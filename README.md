@@ -23,7 +23,8 @@ https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 <p>Run <strong>main.py</strong><p>
 
 ```cmd
-python main.py
+python main.py 
+or
 python3.7 main.py
 ```
 ----------------------------------------------------------------------------------------------------------------------------------------
