@@ -17,14 +17,14 @@ A python application to visualize popular sorting algorithms. It's a simple desk
 <p> Clone the repository </p>
 
 ```
-https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
+$ git clone https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 ```
 
 <p>Run <strong>main.py</strong><p>
 
 ```cmd
-python main.py 
+$ python main.py 
 or
-python3.7 main.py
+$ python3.7 main.py
 ```
 ----------------------------------------------------------------------------------------------------------------------------------------
