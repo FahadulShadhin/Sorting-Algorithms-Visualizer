@@ -9,12 +9,16 @@ A python application to visualize popular sorting algorithms. It's a simple desk
 * Heap Sort 
 * Counting Sort
 ----------------------------------------------------------------------------------------------------------------------------------------
-## Technologies used:
-The project is created with:
+## Built With:
 * Python 3.7.7
 * Tkinter 8.6
 ----------------------------------------------------------------------------------------------------------------------------------------
-## Run it:
+## Run It:
+<p> Clone the repository </p>
+```
+https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
+```
+
 <p>Run <strong>main.py</strong><p>
 
 ```cmd
