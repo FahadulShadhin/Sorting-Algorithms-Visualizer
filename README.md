@@ -1,8 +1,8 @@
 # Sorting Algorithms Visualizer
 <p>A python application to visualize popular sorting algorithms.</p>
-<img src="img/ss11.png">
-<img src="img/ss22.png">
-<img src="img/ss33.png">
+<img src="img/ss1.png">
+<img src="img/ss2.png">
+<img src="img/ss3.png">
 
 ## Implemented Algorithms:
 * Bubble Sort 
