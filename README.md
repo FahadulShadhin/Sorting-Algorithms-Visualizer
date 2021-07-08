@@ -1,6 +1,10 @@
 # Sorting Algorithms Visualizer
-A python application to visualize popular sorting algorithms. It's a simple desktop application to graphically visualize commonly studied sorting algorihtms. It can sort a randomly generated array and also show the steps while sorting. 
-#### Algorithms Implemented:
+<p>A python application to visualize popular sorting algorithms.</p>
+<img src="img/ss1.png">
+<img src="img/ss2.png">
+<img src="img/ss3.png">
+
+## Implemented Algorithms:
 * Bubble Sort 
 * Insertion Sort 
 * Selection Sort 
