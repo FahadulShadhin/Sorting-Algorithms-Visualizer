@@ -1,5 +1,5 @@
 # Sorting Algorithms Visualizer
-<p>A python application to visualize popular sorting algorithms.</p>
+<p>A python application to visualize various sorting algorithms.</p>
 
 ## Implemented Algorithms:
 * Bubble Sort 
