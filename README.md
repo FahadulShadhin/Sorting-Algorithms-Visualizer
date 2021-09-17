@@ -19,7 +19,7 @@
 * Python 3.7.7
 * Tkinter 8.6
 
-## Run It:
+## Run It (Python>=3.5):
 <p> Clone the repository </p>
 
 ```
