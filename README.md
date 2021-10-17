@@ -27,17 +27,13 @@
 <p align="center"><img height="500" src="img/ss3.png"></p> -->
 
 ## Run It (Python>=3.5):
-<p> Clone the repository </p>
+- Clone the repository
 
-```
+```bash
 $ git clone https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 ```
-
-<p>Run <strong>main.py</strong><p>
+- Run ```main.py``` from root
 
 ```bash
 $ python main.py 
-or
-$ python3.7 main.py
 ```
-  
