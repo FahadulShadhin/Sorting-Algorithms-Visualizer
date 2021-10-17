@@ -1,5 +1,12 @@
 # Sorting Algorithms Visualizer
 <p>A python application to visualize various sorting algorithms.</p>
+<table>
+  <tr>
+    <td><img  src="img/ss1.png"></td>
+    <td><img  src="img/ss2.png"></td>
+    <td><img  src="img/ss3.png"></td>
+  </tr>
+</table>
 
 ## Implemented Algorithms:
 * Bubble Sort 
@@ -10,14 +17,14 @@
 * Heap Sort 
 * Counting Sort
 
-## Screenshots:
-<img src="img/ss1.png">
-<img src="img/ss2.png">
-<img src="img/ss3.png">
-
 ## Built With:
 * Python 3.7.7
 * Tkinter 8.6
+
+<!-- ## Screenshots: -->
+<!-- <p align="center"><img height="500" src="img/ss1.png"></p>
+<p align="center"><img height="500" src="img/ss2.png"></p>
+<p align="center"><img height="500" src="img/ss3.png"></p> -->
 
 ## Run It (Python>=3.5):
 <p> Clone the repository </p>
@@ -28,7 +35,7 @@ $ git clone https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 
 <p>Run <strong>main.py</strong><p>
 
-```cmd
+```bash
 $ python main.py 
 or
 $ python3.7 main.py
