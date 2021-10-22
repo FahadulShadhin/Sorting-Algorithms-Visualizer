@@ -33,5 +33,5 @@ $ git clone https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 ```
 - Run ```main.py``` from root
 ```bash
-$ python main.py 
+$ python3 main.py 
 ```
