@@ -29,9 +29,9 @@
 ## Run It (Python >= 3.5):
 - Clone the repository
 ```bash
-git clone https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
+$ git clone https://github.com/FahadulShadhin/Sorting-Algorithms-Visualizer.git
 ```
 - Run ```main.py``` from root
 ```bash
-python3 main.py 
+$ python3 main.py 
 ```
