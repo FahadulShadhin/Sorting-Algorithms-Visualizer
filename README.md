@@ -1,12 +1,13 @@
 # Sorting Algorithms Visualizer
 <p>A python application to visualize various sorting algorithms.</p>
-<table>
+<!-- <table>
   <tr>
     <td><img  src="img/ss1.png"></td>
     <td><img  src="img/ss2.png"></td>
     <td><img  src="img/ss3.png"></td>
   </tr>
-</table>
+</table> -->
+<p align='center'><img  src="img/ss1.png"></p>
 
 ## Implemented Algorithms:
 * Bubble Sort 
