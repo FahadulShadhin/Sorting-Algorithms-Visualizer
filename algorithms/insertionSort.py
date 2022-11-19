@@ -9,7 +9,7 @@ def insertion_sort(data, drawData, timeTick):
             data[k] = data[k-1]
             k -= 1
         data[k] = temp
-        drawData(data, [PINK if x == k or x == i else BLUE for x in range(len(data))])
-        time.sleep(timeTick)
-    return data  
+        drawData(data, [YELLOW if x == k or x == i else BLUE for x in range(len(data))])
+        time.sleep(timeTick)  
     drawData(data, [BLUE for x in range(len(data))])
+    return data

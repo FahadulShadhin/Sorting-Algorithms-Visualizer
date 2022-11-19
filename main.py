@@ -4,6 +4,7 @@ from tkinter import filedialog
 import os
 import random
 from colors import *
+from buttonProperties import changeOnHover
 
 # Importing algorithms 
 from algorithms.bubbleSort import bubble_sort
@@ -64,7 +65,7 @@ def read_data():
 
 def set_speed():
     if speed_menu.get() == 'Slow':
-        return 0.8
+        return 0.3
     elif speed_menu.get() == 'Medium':
         return 0.1
     else:
@@ -101,19 +102,6 @@ def select_multiple():
     # input data file
     read_data()
 
-
-
-# function to change properties of button on hover
-def changeOnHover(button, colorOnHover, colorOnLeave):
-
-    # adjusting backgroung of the widget
-    # background on entering widget
-    button.bind("<Enter>", func=lambda e: button.config(
-        background=colorOnHover))
-  
-    # background color on leaving widget
-    button.bind("<Leave>", func=lambda e: button.config(
-        background=colorOnLeave))
 
 
 ### User interface ###
