@@ -14,7 +14,7 @@ from algorithms.mergeSort import merge_sort
 from algorithms.quickSort import quick_sort
 from algorithms.heapSort import heap_sort
 from algorithms.countingSort import counting_sort
-
+from algorithms.radixSort import radix_sort
 
 
 # Main window 
@@ -93,8 +93,12 @@ def sort():
         quick_sort(data, 0, len(data)-1, drawData, timeTick)
     elif algo_menu.get() == 'Heap Sort':
         heap_sort(data, drawData, timeTick)
-    else:
+    elif algo_menu.get() == 'Counting Sort':
         counting_sort([int(x) for x in data], drawData, timeTick)
+    elif algo_menu.get() == 'Radix Sort':
+        radix_sort([int(x) for x in data], drawData, timeTick)
+    else:
+        y = 0
 
 def select_multiple():
     global paths
