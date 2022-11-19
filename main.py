@@ -7,12 +7,13 @@ from colors import *
 
 # Importing algorithms 
 from algorithms.bubbleSort import bubble_sort
-from algorithms.selectionSort import selection_sort
+from algorithms.bucketSort import bucket_sort
 from algorithms.insertionSort import insertion_sort
 from algorithms.mergeSort import merge_sort
 from algorithms.quickSort import quick_sort
 from algorithms.heapSort import heap_sort
 from algorithms.countingSort import counting_sort
+
 
 
 # Main window 
@@ -77,7 +78,7 @@ def sort():
     if algo_menu.get() == 'Bubble Sort':
         bubble_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Selection Sort':
-        selection_sort(data, drawData, timeTick)
+        bucket_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Insertion Sort':
         insertion_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Merge Sort':
