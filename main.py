@@ -64,7 +64,7 @@ def read_data():
 
 def set_speed():
     if speed_menu.get() == 'Slow':
-        return 0.3
+        return 0.8
     elif speed_menu.get() == 'Medium':
         return 0.1
     else:
@@ -77,8 +77,8 @@ def sort():
     
     if algo_menu.get() == 'Bubble Sort':
         bubble_sort(data, drawData, timeTick)
-    elif algo_menu.get() == 'Selection Sort':
-        bucket_sort(data, drawData, timeTick)
+    elif algo_menu.get() == 'Bucket Sort':
+        bucket_sort(data, drawData, timeTick, insertion_sort)
     elif algo_menu.get() == 'Insertion Sort':
         insertion_sort(data, drawData, timeTick)
     elif algo_menu.get() == 'Merge Sort':
