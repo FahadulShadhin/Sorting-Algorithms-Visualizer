@@ -53,13 +53,18 @@ def drawData(data, colorArray):
 
 # Read data from the txt file
 def read_data():
-    global data
+    global data, originalData
 
     data = []
     with open(paths) as f:
         content = f.read()
         data = content.split(' ')
+    originalData = data.copy()
     data = [float(x) for x in data]
+    drawData(data, [BLUE for x in range(len(data))])
+
+def reset():
+    data = [float(x) for x in originalData]
     drawData(data, [BLUE for x in range(len(data))])
 
 
@@ -129,6 +134,9 @@ l1.grid(row=1, column=0, padx=10, pady=5, sticky=W)
 algo_menu = ttk.Combobox(UI_frame, textvariable=algorithm_name, values=algo_list)
 algo_menu.grid(row=1, column=1, padx=5, pady=5)
 algo_menu.current(0)
+b3 = Button(UI_frame,text="Reset",bg="gray26",width=6,height=1,fg="white",font=("arial 8 bold"),command=reset)
+b3.grid(row=1, column=2, padx=5, pady=5)
+changeOnHover(b2,"seaGreen1","gray26")
 
 l2 = Label(UI_frame, text="Sorting Speed: ", bg=WHITE)
 l2.grid(row=2, column=0, padx=10, pady=5, sticky=W)
