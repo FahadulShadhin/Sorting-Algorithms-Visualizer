@@ -49,16 +49,15 @@ def drawData(data, colorArray):
     window.update_idletasks()
 
 
-# Randomly generate array
+# Read data from the txt file
 def read_data():
     global data
 
     data = []
     with open(paths) as f:
         content = f.read()
-        print(type(content))
-        print(content)
-
+        data = content.split(' ')
+    data = [float(x) for x in data]
     drawData(data, [BLUE for x in range(len(data))])
 
 
@@ -92,7 +91,7 @@ def sort():
 
 def select_multiple():
     global paths
-    paths = filedialog.askopenfilenames(initialdir=os.getcwd(), filetypes=(("txt files","*.txt"),))
+    paths = filedialog.askopenfilename(initialdir=os.getcwd(), filetypes=(("txt files","*.txt"),))
     entry1.configure(state=NORMAL)
     entry1.delete(0,END)
     entry1.insert(0,paths)
