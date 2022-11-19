@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import filedialog
+import os
 import random
 from colors import *
 
@@ -23,7 +25,7 @@ window.config(bg = WHITE)
 algorithm_name = StringVar()
 speed_name = StringVar()
 data = []
-algo_list = ['Bubble Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort', 'Quick Sort', 'Heap Sort', 'Counting Sort']
+algo_list = ['Bubble Sort', 'Insertion Sort', 'Bucket Sort', 'Merge Sort', 'Quick Sort', 'Heap Sort', 'Counting Sort', 'Radix Sort']
 speed_list = ['Fast', 'Medium', 'Slow']
 
 
@@ -48,13 +50,14 @@ def drawData(data, colorArray):
 
 
 # Randomly generate array
-def generate():
+def read_data():
     global data
 
     data = []
-    for i in range(0, 100):
-        random_value = random.randint(1, 150)
-        data.append(random_value)
+    with open(paths) as f:
+        content = f.read()
+        print(type(content))
+        print(content)
 
     drawData(data, [BLUE for x in range(len(data))])
 
@@ -87,31 +90,70 @@ def sort():
     else:
         counting_sort(data, drawData, timeTick)
 
+def select_multiple():
+    global paths
+    paths = filedialog.askopenfilenames(initialdir=os.getcwd(), filetypes=(("txt files","*.txt"),))
+    entry1.configure(state=NORMAL)
+    entry1.delete(0,END)
+    entry1.insert(0,paths)
+    entry1.configure(state='disabled')
+    
+    # input data file
+    read_data()
+
+
+
+# function to change properties of button on hover
+def changeOnHover(button, colorOnHover, colorOnLeave):
+
+    # adjusting backgroung of the widget
+    # background on entering widget
+    button.bind("<Enter>", func=lambda e: button.config(
+        background=colorOnHover))
+  
+    # background color on leaving widget
+    button.bind("<Leave>", func=lambda e: button.config(
+        background=colorOnLeave))
+
 
 ### User interface ###
 UI_frame = Frame(window, width= 900, height=300, bg=WHITE)
 UI_frame.grid(row=0, column=0, padx=10, pady=5)
 
+
+l3 = Label(UI_frame, text="Choose File: ", bg=WHITE)
+l3.grid(row=0, column=0, padx=10, pady=5, sticky=W)
+
+# Select the input data file
+text1 = StringVar()
+entry1 = Entry(UI_frame,textvariable=text1, bd=2,width=23)
+entry1.grid(row=0,column=1,padx=10, pady=5, sticky=W)
+entry1.insert(0,os.getcwd())
+entry1.configure(state='disabled')
+
+b2 = Button(UI_frame,text="Browse",bg="gray26",width=6,height=1,fg="white",font=("arial 8 bold"),command=select_multiple)
+b2.grid(row=0, column=2, padx=5, pady=5)
+changeOnHover(b2,"seaGreen1","gray26")
+
+
 l1 = Label(UI_frame, text="Algorithm: ", bg=WHITE)
-l1.grid(row=0, column=0, padx=10, pady=5, sticky=W)
+l1.grid(row=1, column=0, padx=10, pady=5, sticky=W)
 algo_menu = ttk.Combobox(UI_frame, textvariable=algorithm_name, values=algo_list)
-algo_menu.grid(row=0, column=1, padx=5, pady=5)
+algo_menu.grid(row=1, column=1, padx=5, pady=5)
 algo_menu.current(0)
 
 l2 = Label(UI_frame, text="Sorting Speed: ", bg=WHITE)
-l2.grid(row=1, column=0, padx=10, pady=5, sticky=W)
+l2.grid(row=2, column=0, padx=10, pady=5, sticky=W)
 speed_menu = ttk.Combobox(UI_frame, textvariable=speed_name, values=speed_list)
-speed_menu.grid(row=1, column=1, padx=5, pady=5)
+speed_menu.grid(row=2, column=1, padx=5, pady=5)
 speed_menu.current(0)
 
 canvas = Canvas(window, width=800, height=400, bg=WHITE)
-canvas.grid(row=1, column=0, padx=10, pady=5)
+canvas.grid(row=4, column=0, padx=10, pady=5)
 
-b1 = Button(UI_frame, text="Sort", command=sort, bg=LIGHT_GRAY)
-b1.grid(row=2, column=1, padx=5, pady=5)
-
-b3 = Button(UI_frame, text="Generate Array", command=generate, bg=LIGHT_GRAY)
-b3.grid(row=2, column=0, padx=5, pady=5)
+b1 = Button(UI_frame,text="Sort",bg="gray26",width=6,height=1,fg="white",font=("arial 8 bold"),command=sort)
+b1.grid(row=3, column=1, padx=5, pady=5)
+changeOnHover(b1,"seaGreen1","gray26")
 
 
 window.mainloop()
