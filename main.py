@@ -71,7 +71,7 @@ def reset():
 
 def set_speed():
     if speed_menu.get() == 'Slow':
-        return 0.3
+        return 0.8
     elif speed_menu.get() == 'Medium':
         return 0.1
     else:
@@ -94,7 +94,7 @@ def sort():
     elif algo_menu.get() == 'Heap Sort':
         heap_sort(data, drawData, timeTick)
     else:
-        counting_sort(data, drawData, timeTick)
+        counting_sort([int(x) for x in data], drawData, timeTick)
 
 def select_multiple():
     global paths
