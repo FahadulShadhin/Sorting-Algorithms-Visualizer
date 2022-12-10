@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 import os
-import random
 from colors import *
 from buttonProperties import changeOnHover
 
@@ -15,12 +14,14 @@ from algorithms.quickSort import quick_sort
 from algorithms.heapSort import heap_sort
 from algorithms.countingSort import counting_sort
 from algorithms.radixSort import radix_sort
+from algorithms.hybridSort import hybrid_quick_sort
 
+''' --------------------------------------------------------------------------------------------------'''
 
 # Main window 
 window = Tk()
-window.title("Sorting Algorithms Visualization")
-window.maxsize(1000, 700)
+window.title("Sorting Visualizer")
+window.maxsize(1300, 700)
 window.config(bg = WHITE)
 
 
@@ -28,14 +29,15 @@ algorithm_name = StringVar()
 speed_name = StringVar()
 # data = []
 # originalData = []
-algo_list = ['Bubble Sort', 'Insertion Sort', 'Bucket Sort', 'Merge Sort', 'Quick Sort', 'Heap Sort', 'Counting Sort', 'Radix Sort']
+algo_list = ['Bubble Sort', 'Insertion Sort', 'Bucket Sort', 'Merge Sort', 'Quick Sort',
+                 'Heap Sort', 'Counting Sort', 'Radix Sort','Hybrid Sort']
 speed_list = ['Fast', 'Medium', 'Slow']
 
 
 # Drawing the numerical array as bars
 def drawData(data, colorArray):
     canvas.delete("all")
-    canvas_width = 800
+    canvas_width = 1300
     canvas_height = 400
     x_width = canvas_width / (len(data) + 1)
     offset = 4
@@ -56,28 +58,57 @@ def drawData(data, colorArray):
 def read_data():
     global data, originalData
     data = []
+
+    # reading from the input file
     with open(paths) as f:
         content = f.read()
+
+        # Spliting the numbers on the basis of space delimiter
         data = content.split(' ')
-    data = [float(x) for x in data]
+
+    # flag variable by default tells that data list contains only positive numbers    
+    flag = False
+
+    if type(data[0]) == str:
+        data = [float(x) if x != '' or x != ' ' else 10 for x in data]
+
+    # Checking whether the data contains negative or not
+    for x in data:
+        if x < 0:
+            flag = True
+            break
+
+    # If len of data is less than 2 and it contians negative numbers that clear tha data list
+    if len(data) < 2 or flag :
+        data = []
+
+    print(len(data))
+
+    # Copy the data list to save it for the reset feature
     originalData = data.copy()
+
+    # Draw the data list on the Canvas
     drawData(data, [BLUE for x in range(len(data))])
 
+
+# Resetting the canvas with input numbers sequence
 def reset():
     data = []
     data = originalData.copy()
     drawData(data, [BLUE for x in range(len(data))])
 
 
+# Setting the Visualization speed of the Sorting Algorithms
 def set_speed():
     if speed_menu.get() == 'Slow':
-        return 0.8
+        return 3
     elif speed_menu.get() == 'Medium':
         return 0.1
     else:
-        return 0.001
+        return 0.0001
 
 
+# Calls selected sorting algorithm in the combobox
 def sort():
     timeTick = set_speed()
     
@@ -97,11 +128,16 @@ def sort():
         counting_sort([int(x) for x in data], drawData, timeTick)
     elif algo_menu.get() == 'Radix Sort':
         radix_sort([int(x) for x in data], drawData, timeTick)
+    elif algo_menu.get() == 'Hybrid Sort':
+        hybrid_quick_sort(data, 0, len(data)-1, drawData, timeTick)
     else:
         y = 0
 
+# Browse the input file
 def select_multiple():
     global paths
+
+    # Only one input file is allowable at a time
     paths = filedialog.askopenfilename(initialdir=os.getcwd(), filetypes=(("txt files","*.txt"),))
     entry1.configure(state=NORMAL)
     entry1.delete(0,END)
@@ -111,6 +147,8 @@ def select_multiple():
     # input data file
     read_data()
 
+
+''' --------------------------------------------------------------------------------------------------'''
 
 
 ### User interface ###
@@ -148,7 +186,7 @@ speed_menu = ttk.Combobox(UI_frame, textvariable=speed_name, values=speed_list)
 speed_menu.grid(row=2, column=1, padx=5, pady=5)
 speed_menu.current(0)
 
-canvas = Canvas(window, width=800, height=400, bg=WHITE)
+canvas = Canvas(window, width=1300, height=400, bg=WHITE)
 canvas.grid(row=4, column=0, padx=10, pady=5)
 
 b1 = Button(UI_frame,text="Sort",bg="gray26",width=6,height=1,fg="white",font=("arial 8 bold"),command=sort)
