@@ -4,6 +4,7 @@ from tkinter import filedialog
 import os
 from colors import *
 from buttonProperties import changeOnHover
+import time
 
 # Importing algorithms 
 from algorithms.bubbleSort import bubble_sort
@@ -58,6 +59,8 @@ def drawData(data, colorArray):
 def read_data():
     global data, originalData
     data = []
+    l4.config(text="")
+    l5.config(text="")
 
     # reading from the input file
     with open(paths) as f:
@@ -94,6 +97,8 @@ def read_data():
 # Resetting the canvas with input numbers sequence
 def reset():
     data = []
+    l4.config(text="")
+    l5.config(text="")
     data = originalData.copy()
     drawData(data, [BLUE for x in range(len(data))])
 
@@ -111,27 +116,59 @@ def set_speed():
 # Calls selected sorting algorithm in the combobox
 def sort():
     timeTick = set_speed()
+    start = end = 0
+    spaceComplexity = ""
     
     if algo_menu.get() == 'Bubble Sort':
+        start = time.time()
         bubble_sort(data, drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(1)"
     elif algo_menu.get() == 'Bucket Sort':
+        start = time.time()
         bucket_sort(data, drawData, timeTick, insertion_sort)
+        end = time.time()
+        spaceComplexity = "O(n)"
     elif algo_menu.get() == 'Insertion Sort':
+        start = time.time()
         insertion_sort(data, drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(1)"
     elif algo_menu.get() == 'Merge Sort':
+        start = time.time()
         merge_sort(data, 0, len(data)-1, drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(n)"
     elif algo_menu.get() == 'Quick Sort':
+        start = time.time()
         quick_sort(data, 0, len(data)-1, drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(1)"
     elif algo_menu.get() == 'Heap Sort':
+        start = time.time()
         heap_sort(data, drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(1)"
     elif algo_menu.get() == 'Counting Sort':
+        start = time.time()
         counting_sort([int(x) for x in data], drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(k)"
     elif algo_menu.get() == 'Radix Sort':
+        start = time.time()
         radix_sort([int(x) for x in data], drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(n+k)"
     elif algo_menu.get() == 'Hybrid Sort':
+        start = time.time()
         hybrid_quick_sort(data, 0, len(data)-1, drawData, timeTick)
+        end = time.time()
+        spaceComplexity = "O(1)"
     else:
         y = 0
+
+    l4.config(text = "Time : "+ str(round( (end-start), 3) ) + " sec")
+    l5.config(text="Space Complexity : "+spaceComplexity)
 
 # Browse the input file
 def select_multiple():
@@ -193,5 +230,11 @@ b1 = Button(UI_frame,text="Sort",bg="gray26",width=6,height=1,fg="white",font=("
 b1.grid(row=3, column=1, padx=5, pady=5)
 changeOnHover(b1,"seaGreen1","gray26")
 
+
+l4 = Label(UI_frame, text="", bg=WHITE)
+l4.grid(row=5, column=0, padx=10, pady=5, sticky=W)
+
+l5 = Label(UI_frame, text="", bg=WHITE)
+l5.grid(row=5, column=1, padx=10, pady=5, sticky=W)
 
 window.mainloop()

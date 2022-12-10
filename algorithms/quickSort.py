@@ -21,5 +21,5 @@ def quick_sort(data, start, end, drawData, timeTick):
         drawData(data, [PURPLE if x >= start and x < pivot_position else YELLOW if x == pivot_position
                         else PINK if x > pivot_position and x <=end else BLUE for x in range(len(data))])
         time.sleep(timeTick)
-        
+
     drawData(data, [BLUE for x in range(len(data))])
