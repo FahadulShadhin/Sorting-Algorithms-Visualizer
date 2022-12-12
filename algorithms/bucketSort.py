@@ -4,7 +4,7 @@ from colors import *
 			
 def bucket_sort(data, drawData, timeTick, insertion_sort):
 	arr = []
-	slot_num = 10 
+	slot_num = 10
 
 	for i in range(slot_num):
 		arr.append([])

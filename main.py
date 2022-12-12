@@ -6,7 +6,7 @@ from colors import *
 from buttonProperties import changeOnHover
 import time
 
-# Importing algorithms 
+# Importing algorithms
 from algorithms.bubbleSort import bubble_sort
 from algorithms.bucketSort import bucket_sort
 from algorithms.insertionSort import insertion_sort
@@ -16,6 +16,7 @@ from algorithms.heapSort import heap_sort
 from algorithms.countingSort import counting_sort
 from algorithms.radixSort import radix_sort
 from algorithms.hybridSort import hybrid_quick_sort
+from algorithms.CountIntegersCountSort import findNoOfIntegersInRange
 
 ''' --------------------------------------------------------------------------------------------------'''
 
@@ -31,7 +32,7 @@ speed_name = StringVar()
 # data = []
 # originalData = []
 algo_list = ['Bubble Sort', 'Insertion Sort', 'Bucket Sort', 'Merge Sort', 'Quick Sort',
-                 'Heap Sort', 'Counting Sort', 'Radix Sort','Hybrid Sort']
+                 'Heap Sort', 'Counting Sort', 'Radix Sort','Hybrid Sort', 'Numbers In Range']
 speed_list = ['Fast', 'Medium', 'Slow']
 
 
@@ -111,19 +112,20 @@ def set_speed():
         return 0.1
     else:
         return 0.0001
-
+ 
 
 # Calls selected sorting algorithm in the combobox
 def sort():
     timeTick = set_speed()
-    start = end = 0
+    start = end = count = 0 
     spaceComplexity = ""
     
     if algo_menu.get() == 'Bubble Sort':
-        start = time.time()
-        bubble_sort(data, drawData, timeTick)
-        end = time.time()
-        spaceComplexity = "O(1)"
+        if type(data[0]) == float:
+            start = time.time()
+            bubble_sort(data, drawData, timeTick)
+            end = time.time()
+            spaceComplexity = "O(1)"
     elif algo_menu.get() == 'Bucket Sort':
         start = time.time()
         bucket_sort(data, drawData, timeTick, insertion_sort)
@@ -150,6 +152,7 @@ def sort():
         end = time.time()
         spaceComplexity = "O(1)"
     elif algo_menu.get() == 'Counting Sort':
+        
         start = time.time()
         counting_sort([int(x) for x in data], drawData, timeTick)
         end = time.time()
@@ -164,11 +167,19 @@ def sort():
         hybrid_quick_sort(data, 0, len(data)-1, drawData, timeTick)
         end = time.time()
         spaceComplexity = "O(1)"
+    elif algo_menu.get() == 'Numbers In Range':
+        start = time.time()
+        count = findNoOfIntegersInRange([int(x) for x in data], int(entry2.get()), int(entry3.get()), drawData, timeTick)
+        end = time.time()
     else:
         y = 0
 
     l4.config(text = "Time : "+ str(round( (end-start), 3) ) + " sec")
-    l5.config(text="Space Complexity : "+spaceComplexity)
+    if count > 0:
+        l5.config(text="Count of Integers in Range : "+str(count))
+    else:
+        l5.config(text="Space Complexity : "+spaceComplexity)
+
 
 # Browse the input file
 def select_multiple():
@@ -223,18 +234,31 @@ speed_menu = ttk.Combobox(UI_frame, textvariable=speed_name, values=speed_list)
 speed_menu.grid(row=2, column=1, padx=5, pady=5)
 speed_menu.current(0)
 
+l6 = Label(UI_frame, text="Range :", bg=WHITE)
+l6.grid(row=3, column=0, padx=10, pady=5, sticky=W)
+
+text2 = StringVar()
+entry2 = Entry(UI_frame,textvariable=text2, bd=2,width=10)
+entry2.grid(row=3,column=1,padx=10, pady=5, sticky=W)
+entry2.insert(0,'0')
+
+text3 = StringVar()
+entry3 = Entry(UI_frame,textvariable=text3, bd=2,width=10)
+entry3.grid(row=3,column=2,padx=10, pady=5, sticky=W)
+entry3.insert(0,'0')
+
 canvas = Canvas(window, width=1300, height=400, bg=WHITE)
-canvas.grid(row=4, column=0, padx=10, pady=5)
+canvas.grid(row=5, column=0, padx=10, pady=5)
 
 b1 = Button(UI_frame,text="Sort",bg="gray26",width=6,height=1,fg="white",font=("arial 8 bold"),command=sort)
-b1.grid(row=3, column=1, padx=5, pady=5)
+b1.grid(row=4, column=1, padx=5, pady=5)
 changeOnHover(b1,"seaGreen1","gray26")
 
 
 l4 = Label(UI_frame, text="", bg=WHITE)
-l4.grid(row=5, column=0, padx=10, pady=5, sticky=W)
+l4.grid(row=6, column=0, padx=10, pady=5, sticky=W)
 
 l5 = Label(UI_frame, text="", bg=WHITE)
-l5.grid(row=5, column=1, padx=10, pady=5, sticky=W)
+l5.grid(row=6, column=1, padx=10, pady=5, sticky=W)
 
 window.mainloop()
